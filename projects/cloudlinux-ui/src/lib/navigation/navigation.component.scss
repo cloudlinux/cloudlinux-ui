@@ -1,0 +1,94 @@
+@import "../core/rtl";
+
+cl-navigation {
+    $breakpoint-max: 767px;
+    $breakpoint-min: $breakpoint-max + 1px;
+    display: block;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.23);
+    @media (max-width: $breakpoint-max) {
+        max-height: 700px;
+        transition: max-height 0.6s;
+        &.cl-nav-closed {
+            max-height: 55px;
+            overflow: hidden;
+        }
+        &.ng-animating {
+            overflow: hidden;
+        }
+    }
+    .cl-logo-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 54px;
+
+        .cl-nav-trigger {
+            @media (min-width: $breakpoint-min) {
+                display: none;
+            }
+            @include rtl-margin-right(10px);
+        }
+    }
+    .cl-main-nav {
+        display: flex;
+        flex-wrap: wrap;
+        min-height: 55px;
+        @media (max-width: $breakpoint-max) {
+            flex-direction: column;
+        }
+    }
+    .cl-nav-separator {
+        flex-grow: 1;
+    }
+
+    .cl-main-nav-item {
+        display: flex;
+        height: 55px;
+        cursor: pointer;
+        @media (max-width: $breakpoint-max) {
+            flex-direction: row-reverse;
+            border-top: 1px solid #e4e2e2;
+        }
+        @media (min-width: $breakpoint-min) {
+            flex-direction: column;
+        }
+
+        > *:nth-child(1) {
+            flex-grow: 1;
+            text-decoration: none;
+            height: 100%;
+            @media (max-width: $breakpoint-max) {
+                padding-top: 14px;
+                padding-bottom: 14px;
+                @include rtl-padding-left(7px);
+            }
+            @media (min-width: $breakpoint-min) {
+                padding: 15px 15px 11px;
+            }
+            display: flex;
+            align-items: center;
+        }
+
+        .cl-main-nav-item-border {
+            min-height: 4px;
+            min-width: 4px;
+        }
+    }
+    .settings-button .material-icons {
+        font-size: 20px;
+        @include rtl-margin(2px, 4px, 0, -8px);
+        vertical-align: top;
+    }
+}
+
+.cl-nav-badge {
+    min-width: 24px;
+    border-radius: 99px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    @include rtl-margin-left(5px);
+    height: 24px;
+}

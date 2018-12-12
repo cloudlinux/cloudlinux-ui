@@ -16,6 +16,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "cloudlinux-ui": [
+        "dist/cloudlinux-ui"
+      ],
+      "cloudlinux-ui/*": [
+        "dist/cloudlinux-ui/*"
+      ]
+    }
   }
 }

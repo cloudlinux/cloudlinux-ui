@@ -1,0 +1,80 @@
+
+@function hasAppParent($ampersand) {
+  @return nth(nth(&, 1), 1) == '.i360-app';
+}
+
+@mixin dir($dir) {
+  @if hasAppParent(&) {
+    .#{$dir} & {@content};
+  } @else {
+    :host-context(.#{$dir}) & {@content};
+  }
+}
+
+@mixin ltr {
+  @include dir(ltr) {@content};
+}
+
+@mixin rtl {
+  @include dir(rtl) {@content};
+}
+
+@mixin rtl-wrapper($ltr, $rtl, $value) {
+  @include ltr {#{$ltr}: $value};
+  @include rtl {#{$rtl}: $value};
+}
+
+@mixin rtl-wrapper-shorthand($cmd, $top, $right, $bottom, $left) {
+  @include ltr {#{$cmd}: $top $right $bottom $left};
+  @include rtl {#{$cmd}: $top $left $bottom $right};
+}
+
+@mixin rtl-margin($top, $right, $bottom, $left) {
+  @include rtl-wrapper-shorthand(margin, $top, $right, $bottom, $left);
+}
+
+@mixin rtl-margin-left($value) {
+  @include rtl-wrapper(margin-left, margin-right, $value);
+}
+
+@mixin rtl-margin-right($value) {
+  @include rtl-wrapper(margin-right, margin-left, $value);
+}
+
+@mixin rtl-padding($top, $right, $bottom, $left) {
+  @include rtl-wrapper-shorthand(padding, $top, $right, $bottom, $left);
+}
+
+@mixin rtl-padding-left($value) {
+  @include rtl-wrapper(padding-left, padding-right, $value);
+}
+
+@mixin rtl-padding-right($value) {
+  @include rtl-wrapper(padding-right, padding-left, $value);
+}
+
+@mixin rtl-right($value) {
+  @include rtl-wrapper(right, left, $value);
+}
+
+@mixin rtl-left($value) {
+  @include rtl-wrapper(left, right, $value);
+}
+
+@mixin rtl-cmd-right($cmd) {
+  @include ltr {#{$cmd}: right};
+  @include rtl {#{$cmd}: left};
+}
+
+@mixin rtl-cmd-left($cmd) {
+  @include ltr {#{$cmd}: left};
+  @include rtl {#{$cmd}: right};
+}
+
+@mixin rtl-border-radius($top, $right, $bottom, $left) {
+  @include rtl-wrapper-shorthand(border-radius, $top, $right, $bottom, $left);
+}
+
+@mixin rtl-border-width($top, $right, $bottom, $left) {
+  @include rtl-wrapper-shorthand(border-width, $top, $right, $bottom, $left);
+}

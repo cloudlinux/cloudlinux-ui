@@ -1,0 +1,6 @@
+@import "navigation/navigation.theme";
+
+
+@mixin cloudlinux-ui-theme($theme) {
+    @include navigation-component-theme($theme);
+}

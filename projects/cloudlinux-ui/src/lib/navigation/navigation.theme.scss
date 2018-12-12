@@ -1,0 +1,23 @@
+@mixin navigation-component-theme($theme) {
+    cl-navigation {
+        .cl-main-nav {
+            background-color: map-get($theme, navbar-bg);
+        }
+        .cl-main-nav-item {
+            &:hover, &:focus {
+                background-color: map-get($theme, gray-hover-bg);
+            }
+            > *:nth-child(1) {
+                color: map-get($theme, gray-fg);
+                &.cl-active {
+                    + .cl-main-nav-item-border {
+                        background-color: map-get($theme, primary-color);
+                    }
+                }
+            }
+        }
+    }
+    .cl-nav-badge {
+        background-color: map-get($theme, alert-red);
+    }
+}

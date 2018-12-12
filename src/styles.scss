@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+@import "cloudlinux-ui/theming";
+
+$primary-color: #38ab63;
+$header-color: #1d1d1d;
+$focused-bg: rgba(153, 153, 153, 0.2);
+$pressed-bg: rgba(153, 153, 153, 0.4);
+$disabled-fg: rgba(0, 0, 0, 0.26);
+$scroll-color: #53b076;
+$gray-hover-bg: #f1f1f1;
+$primary-hover-bg: #e9f6ee;
+$primary-bg: #eff8f2;
+$navbar-bg: #fafafa;
+$gray: #afafaf;
+$alert-red: #ef5870;
+$error-color: #ef5350;
+$error-text: #ea7474;
+$success-color: #43a047;
+$gray-fg: #535353;
+$gray-dc: #616161;
+$gray-title: #4e5665;
+$btn-primary-border: #e8e8e8;
+
+$cleaned: #16ac5c;
+$quarantined: #ff9800;
+$infected: #f36a6a;
+$unremarkable: #b9b9b9;
+
+
+$cl-theme: (
+        primary-color: $primary-color,
+        error-color: $error-color,
+        navbar-bg: $navbar-bg,
+        gray-hover-bg: $gray-hover-bg,
+        alert-red: $alert-red,
+        gray-fg: $gray-fg,
+);
+
+@include cloudlinux-ui-theme($cl-theme);

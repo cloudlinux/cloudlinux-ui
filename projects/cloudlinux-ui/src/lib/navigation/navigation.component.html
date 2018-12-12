@@ -1,0 +1,43 @@
+<div class="cl-main-nav">
+    <div class="cl-logo-container">
+        <ng-template [ngTemplateOutlet]="logoTemplate"></ng-template>
+        <button mat-icon-button
+                (click)="closed = !closed"
+                aria-haspopup="true"
+                [attr.aria-expanded]="!closed"
+                class="cl-nav-trigger">
+            <mat-icon color="primary">{{closed ? 'menu' : 'close'}}</mat-icon>
+        </button>
+    </div>
+    <div *ngFor="let template of leftTemplates"
+         class="cl-main-nav-item">
+        <ng-template [ngTemplateOutlet]="template"></ng-template>
+        <div class="cl-main-nav-item-border"></div>
+    </div>
+    <div class="cl-main-nav-item"
+         *ngIf="dropTemplates.length"
+         (click)="$event.stopPropagation()">
+        <a class="material-icons"
+           tabindex="0"
+           i360NavigationDropdownOverlay
+           [matMenuTriggerFor]="dropMenu">
+            more_horiz
+        </a>
+        <div class="cl-main-nav-item-border"></div>
+    </div>
+    <div class="cl-nav-separator" #separator></div>
+    <div *ngFor="let template of rightTemplates"
+         class="cl-main-nav-item">
+        <ng-template [ngTemplateOutlet]="template"></ng-template>
+        <div class="cl-main-nav-item-border"></div>
+    </div>
+    <div *ngFor="let template of buttonTemplates">
+        <ng-template [ngTemplateOutlet]="template"></ng-template>
+        <div class="cl-main-nav-item-border"></div>
+    </div>
+</div>
+<mat-menu #dropMenu="matMenu">
+    <div mat-menu-item *ngFor="let template of dropTemplates">
+        <ng-template [ngTemplateOutlet]="template"></ng-template>
+    </div>
+</mat-menu>
