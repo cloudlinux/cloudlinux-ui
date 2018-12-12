@@ -1,5 +1,5 @@
 {
-  "name": "cloudlinux-ui-app",
+  "name": "cloudlinux-ui",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,9 +8,9 @@
     "test": "ng test cloudlinux-ui --watch=false --code-coverage --browsers=ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build_lib": "ng build cloudlinux-ui && scss-bundle -e projects/cloudlinux-ui/src/lib/theming.scss -d dist/cloudlinux-ui/theming.scss",
+    "build_lib": "ng build cloudlinux-ui && scss-bundle -e projects/cloudlinux-ui/src/lib/theming.scss -d dist/cloudlinux-ui/theming.scss && cp projects/cloudlinux-ui/src/lib/core/rtl.scss dist/cloudlinux-ui/rtl.scss",
     "npm_pack": "cd dist/cloudlinux-ui && npm pack",
-    "package": "npm run build_lib && npm run npm_pack",
+    "package": "npm run build_lib --prod && npm run npm_pack",
     "package:watch": "npm run build_lib -- --watch",
     "test:watch": "ng test cloudlinux-ui"
   },
